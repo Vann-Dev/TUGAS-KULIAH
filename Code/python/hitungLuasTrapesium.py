@@ -4,7 +4,7 @@ sisiB = float(input("Masukkan panjang sisi B: \n=>\t"))
 
 luas = 0.5 * (tinggi * (sisiA + sisiB))
 
-print("Luas trapesium nya adalah: {} cm".format(luas))
+print(f"Luas trapesium nya adalah: {luas} cm")
 
 
 '''
