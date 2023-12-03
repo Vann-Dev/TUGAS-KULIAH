@@ -15,31 +15,31 @@ if kolomA == kolomB and barisA == barisB:
     print("============================ MATRIX A ============================")
     print()
 
-    for b in range(barisA):
-        toUse = []
-        for k in range(kolomA):
-            toUse.append(int(input(f"Masukkan matrix A[{b}][{k}]: ")))
-        matA.append(toUse)
+    for b in range(barisA): # 1
+        kolom = []
+        for k in range(kolomA): # 0
+            kolom.append(int(input(f"Masukkan matrix A[{b}][{k}]: ")))
+        matA.append(kolom)
 
     print()
     print("============================ MATRIX B ============================")
     print()
 
     for b in range(barisB):
-        toUse = []
+        kolom = []
         for k in range(kolomB):
-            toUse.append(int(input(f"Masukkan matrix B[{b}][{k}]: ")))
-        matB.append(toUse)
+            kolom.append(int(input(f"Masukkan matrix B[{b}][{k}]: ")))
+        matB.append(kolom)
 
     print()
     print("============================ MATRIX C ============================")
     print()
             
     for n in range(barisA):
-        toUse = []
+        kolom = []
         for k in range(kolomA):
-            toUse.append(matB[n][k] - matA[n][k])
-        matC.append(toUse)
+            kolom.append(matB[n][k] - matA[n][k])
+        matC.append(kolom)
 
     for n in range(barisA):
         for k in range(kolomA):
