@@ -10,35 +10,36 @@ matA = []
 matB = []
 matC = []
 
-if kolomA == kolomB and barisA == barisB:
+def makeMatrix(baris, kolom, matrix):
+    for b in range(baris):
+        column = []
+        for k in range(kolom):
+            column.append(int(input(f"Masukkan matrix [{b}][{k}]: ")))
+        matrix.append(column)
+
+def garis(isi):
     print()
-    print("============================ MATRIX A ============================")
+    print(f"============================ {isi} ============================")
     print()
 
-    for b in range(barisA): # 1
+if kolomA == barisB and kolomB == barisA:
+    garis("MATRIX A")
+
+    makeMatrix(barisA, kolomA, matrix=matA)
+
+    garis("MATRIX B")
+
+    makeMatrix(barisB, kolomB, matrix=matB)
+
+    garis("MATRIX C")
+
+    for bb in range (barisA):
         kolom = []
-        for k in range(kolomA): # 0
-            kolom.append(int(input(f"Masukkan matrix A[{b}][{k}]: ")))
-        matA.append(kolom)
-
-    print()
-    print("============================ MATRIX B ============================")
-    print()
-
-    for b in range(barisB):
-        kolom = []
-        for k in range(kolomB):
-            kolom.append(int(input(f"Masukkan matrix B[{b}][{k}]: ")))
-        matB.append(kolom)
-
-    print()
-    print("============================ MATRIX C ============================")
-    print()
-            
-    for n in range(barisA):
-        kolom = []
-        for k in range(kolomA):
-            kolom.append(matB[n][k] - matA[n][k])
+        for kb in range(barisB):
+            total = 0
+            for ka in range(kolomA):
+                total += matA[bb][ka] * matB[ka][kb]
+            kolom.append(total)
         matC.append(kolom)
 
     for n in range(barisA):
@@ -47,8 +48,6 @@ if kolomA == kolomB and barisA == barisB:
         print()
         
 else:
-    print()
-    print("============================ ERROR ============================")
-    print()
+    garis("ERROR")
 
     print("Jumlah kolom dan baris A harus sama dengan jumlah kolom dan baris B")
