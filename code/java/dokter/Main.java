@@ -14,7 +14,7 @@ public class Main {
             String namaDokter = JOptionPane.showInputDialog("Masukkan nama dokter: ");
             dokterObj.nama = namaDokter;
 
-            String gajiDokter = JOptionPane.showInputDialog("Masukkan nama dokter: ");
+            String gajiDokter = JOptionPane.showInputDialog("Masukkan gaji dokter: ");
             dokterObj.gaji = Integer.parseInt(gajiDokter);
 
             System.out.println("ID Dokter: " + dokterObj.idDokter);
