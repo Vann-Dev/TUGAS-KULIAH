@@ -15,7 +15,11 @@ def main():
     idDokter = input("Masukkan id dokter: ")
     gajiDokter = int(input("Masukkan gaji dokter: "))
 
-    dokter = Dokter(idDokter, namaDokter, gajiDokter)
+    dokter = Dokter(None, None, None)
+    dokter.id = idDokter
+    dokter.nama = namaDokter
+    dokter.gaji = gajiDokter
+
     print("Nama dokter: ", dokter.nama)
     print("Id dokter: ", dokter.id)
     print("Gaji dokter: ", dokter.gaji)
