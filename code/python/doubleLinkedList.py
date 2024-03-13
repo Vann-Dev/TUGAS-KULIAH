@@ -45,11 +45,11 @@ class DoubleLinkedList:
         temp = self.head
 
         for _ in range(index - 1):
+            if temp.next is None:
+                self.addLast()
+                return
+            
             temp = temp.next
-
-        if temp.next is None:
-            self.addLast()
-            return
 
         newNode = Node()
         newNode.prev = temp
@@ -68,11 +68,11 @@ class DoubleLinkedList:
         temp = self.head
 
         for _ in range(index - 1):
+            if temp.next is None:
+                self.removeLast()
+                return
+            
             temp = temp.next
-
-        if temp.next.prev is None:
-            self.removeLast()
-            return
 
         temp.next = temp.next.next
         temp.next.prev = temp
