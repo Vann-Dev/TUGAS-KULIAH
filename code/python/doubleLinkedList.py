@@ -1,6 +1,6 @@
 class Node:
     def __init__(self) -> None:
-        self.data = None
+        self.data = input("Enter data: ")
         self.next = None
         self.prev = None
 
@@ -9,9 +9,9 @@ class DoubleLinkedList:
         self.head = None
         self.tail = None
 
-    def addLast(self, data):
+    def addLast(self):
+        print("\nAdding last")
         newNode = Node()
-        newNode.data = data
 
         if self.head is None:
             self.head = newNode
@@ -22,9 +22,9 @@ class DoubleLinkedList:
         self.tail.next = newNode
         self.tail = newNode
 
-    def addFirst(self, data):
+    def addFirst(self):
+        print("\nAdding first")
         newNode = Node()
-        newNode.data = data
 
         if self.head is None:
             self.head = newNode
@@ -35,9 +35,11 @@ class DoubleLinkedList:
         self.head.prev = newNode
         self.head = newNode
 
-    def addMiddle(self, data, index):
+    def addMiddle(self):
+        print("\nAdding middle")
+        index = int(input("Add in index: "))
         if index == 0:
-            self.addFirst(data)
+            self.addFirst()
             return
 
         temp = self.head
@@ -45,13 +47,53 @@ class DoubleLinkedList:
         for _ in range(index - 1):
             temp = temp.next
 
+        if temp.next is None:
+            self.addLast()
+            return
+
         newNode = Node()
-        newNode.data = data
         newNode.prev = temp
         newNode.next = temp.next
 
         temp.next = newNode
         temp.next.prev = newNode
+    
+    def removeMiddle(self):
+        print("\nRemoving middle")
+        index = int(input("Remove in index: "))
+        if index == 0:
+            self.removeFirst()
+            return
+
+        temp = self.head
+
+        for _ in range(index - 1):
+            temp = temp.next
+
+        if temp.next.prev is None:
+            self.removeLast()
+            return
+
+        temp.next = temp.next.next
+        temp.next.prev = temp
+
+    def removeByData(self):
+        print("\nRemoving by data")
+        data = input("Enter data to remove: ")
+        temp = self.head
+
+        while temp:
+            if temp.data == data:
+                if temp.prev is None:
+                    self.removeFirst()
+                    return
+                if temp.next is None:
+                    self.removeLast()
+                    return
+                temp.prev.next = temp.next
+                temp.next.prev = temp.prev
+                return
+            temp = temp.next
 
     def removeFirst(self):
         self.head = self.head.next
@@ -62,18 +104,18 @@ class DoubleLinkedList:
         self.tail.next = None
 
     def printList(self):
+        print("\nPrinting list")
         temp = self.head
         while temp:
-            print(temp.data, end=" ")
+            print(temp.data, end=" -> ")
             temp = temp.next
+        print("None")
 
 dll = DoubleLinkedList()
-dll.addLast(1)
-dll.addLast(2)
-dll.addLast(3)
-dll.addMiddle(4, 1)
-dll.addMiddle(100, 0)
-dll.addMiddle(5, 2)
-dll.addFirst(0)
-dll.addMiddle(19, 7)
+dll.addLast()
+dll.addLast()
+dll.addMiddle()
+dll.removeMiddle()
+dll.addFirst()
+dll.removeByData()
 dll.printList()
